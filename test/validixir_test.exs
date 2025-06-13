@@ -6,6 +6,12 @@ defmodule ValidixirTest do
   alias Validixir.Failure
   alias Validixir.Error
 
+  test "validate/2 with empty validation always succeeds" do
+    result = Validixir.validate(fn -> :ok end, [])
+
+    assert result == :ok
+  end
+
   describe "The example code" do
     test "does not construct invalid addresses" do
       street = %{}
