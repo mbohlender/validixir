@@ -329,6 +329,7 @@ defmodule Validixir do
   """
   @spec validate(function(), [validation_result_t(any())]) :: validation_result_t(any())
   def validate(result_f, []), do: result_f.() |> pure()
+
   def validate(result_f, validations) do
     pure_curried = curry(result_f) |> pure()
     Enum.reduce(validations, pure_curried, fn a, b -> seq(b, a) end)
