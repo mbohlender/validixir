@@ -4,7 +4,7 @@ defmodule Validixir.MixProject do
   def project do
     [
       app: :validixir,
-      version: "1.2.3",
+      version: "1.2.4",
       elixir: "~> 1.13",
       package: package(),
       start_permanent: Mix.env() == :prod,
