@@ -328,6 +328,7 @@ defmodule Validixir do
       {:error, %Validixir.Failure{errors: [error1, error2], __message_lookup: %{"not allowed" => true}}}
   """
   @spec validate(function(), [validation_result_t(any())]) :: validation_result_t(any())
+  def validate(result_f, []), do: result_f.() |> pure()
   def validate(result_f, validations) do
     pure_curried = curry(result_f) |> pure()
     Enum.reduce(validations, pure_curried, fn a, b -> seq(b, a) end)
