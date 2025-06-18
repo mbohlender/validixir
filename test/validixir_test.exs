@@ -7,9 +7,9 @@ defmodule ValidixirTest do
   alias Validixir.Error
 
   test "validate/2 with empty validation always succeeds" do
-    result = Validixir.validate(fn -> :ok end, [])
+    result = Validixir.validate(fn -> :something end, [])
 
-    assert result == :ok
+    assert result == {:ok, :something}
   end
 
   describe "The example code" do
